@@ -3,11 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <title>后台系统</title>
-    <link rel="stylesheet" href="__STATIC__/css/common.css">
     <link rel="stylesheet" href="__STATIC__/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/css/home.css">
     <script type="text/javascript" src="__STATIC__/plugins/layui/layui.js" ></script>
 </head>
 <body>
-    
+<!--header-->
+    <div class="header">
+        <span class="title">
+            后台管理系统
+        </span>
+        <span class="userinfo">
+            admin【系统管理员】
+            <span>
+                <a href="javascript:;" onclick="logout()">退出</a>
+            </span>
+        </span>
+    </div>
+<!--菜单-->
+<div class="menu" id="menu">
+    <div class="layui-collapse" lay-accordion>
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title">杜甫</h2>
+            <div class="layui-colla-content layui-show">
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item"><a href="">产品</a></li>
+                    <li class="layui-nav-item"><a href="">大数据</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title">李清照</h2>
+            <div class="layui-colla-content">
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item"><a href="">产品</a></li>
+                    <li class="layui-nav-item"><a href="">大数据</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title">鲁迅</h2>
+            <div class="layui-colla-content">
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item"><a href="">产品</a></li>
+                    <li class="layui-nav-item"><a href="">大数据</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--主操作页面-->
+<div class="main">
+    <iframe src="/admins.php/admins/Home/welcome" onload="resetMainHeight(this)" style="width: 100%;height: 100%;" frameborder="0" scrolling="0">
+
+    </iframe>
+</div>
+
+<script>
+    //注意：折叠面板 依赖 element 模块，否则无法进行功能性操作
+    layui.use(['element','layer'], function(){
+        var element = layui.element;
+        layer = layui.layer;
+        $ = layui.jquery;
+
+
+        resetMenuHeight();
+    });
+
+    //重新设置菜单容器的高度
+    function resetMenuHeight() {
+        var height = document.documentElement.clientHeight - 50;//页面高度-头部
+        $('#menu').height(height);
+    }
+    //重新设置主操作页面高度
+    function resetMainHeight(obj) {
+        var height = parent.document.documentElement.clientHeight - 53;//页面高度-头部
+        $(obj).parent('div').height(height);
+    }
+</script>
 </body>
 </html>

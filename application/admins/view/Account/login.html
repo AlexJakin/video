@@ -54,7 +54,7 @@
             layer = layui.layer;
 
             // 用户名控件获取焦点
-            $('#username').focus();
+            $('#username').focus() ;
             // 回车登录
             $('input').keydown(function(e){
                 if(e.keyCode == 13){
@@ -85,6 +85,7 @@
                 layer.alert('请输入验证码',{icon:2});
                 return;
             }
+            //ajax提交到后台
             $.post('/admins.php/admins/Account/dologin',{'username':username,'pwd':pwd,'verifycode':verifycode},function(res){
                 if(res.code>0){
                     reloadImg();
