@@ -11,6 +11,7 @@ namespace app\admins\controller;
 
 use think\Controller;
 use think\Request;
+use Util\data\Sysdb;
 
 class BaseAdmin extends Controller
 {
@@ -23,5 +24,6 @@ class BaseAdmin extends Controller
             exit;
         }
         //判断用户是否有权限
+        $this->db = new Sysdb();
     }
 }
